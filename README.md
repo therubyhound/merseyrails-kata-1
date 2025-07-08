@@ -31,3 +31,22 @@ You should also consider:
 - **Responsive design** - the layout should adapt gracefully to smaller screens, supporting a good experience in a Progressive Web App (PWA) or Hotwire Native context
 
 This kata is a great opportunity to explore how Hotwire can be used to create fluid, SPA-like experiences in a traditional Rails application without relying heavily on JavaScript.
+
+## Getting Started
+
+To get up and running with this kata:
+
+1. Fork the repository  
+    Use the **Fork** button on GitHub to create your own copy of this repository
+
+2. Clone your fork locally
+
+3. Run the setup script
+```
+bin/setup
+```
+
+4. Start the Rails server
+```
+bin/dev
+```
