@@ -20,7 +20,11 @@ export default class extends Controller {
     if (!meta) return
     this.selectedValue = meta.content
     const selection = this.element.querySelector(`#${this.selectedValue}`)
-    selection?.classList.add(this.activeClass)
-    selection?.scrollIntoView({ behavior: "auto", block: "start" })
+    if (!selection) return
+    selection.classList.add(this.activeClass)
+    const stickyHeader = this.element.querySelector('.sticky')
+    const headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0
+    const elementTop = selection.offsetTop - headerHeight
+    this.element.scrollTo({ top: elementTop, behavior: "auto" })
   }
 }
