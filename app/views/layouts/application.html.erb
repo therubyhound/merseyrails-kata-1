@@ -23,11 +23,9 @@
   </head>
 
   <body>
-    <main class="flex w-screen h-screen overflow-hidden">
-      <%= turbo_frame_tag :list, class: "w-1/3 border-r",  src: emails_path, target: "_top", data: { turbo_permanent: true } %>
-      <div class="flex-1 p-8 bg-slate-100">
-        <%= yield %>
-      </div>
+    <main class="flex w-screen h-screen overflow-hidden bg-slate-100">
+      <%= turbo_frame_tag :list, class: "fixed inset-0 border-r bg-white md:relative md:w-1/3",  src: emails_path, target: "_top", data: { turbo_permanent: true } %>
+      <%= yield %>
     </main>
   </body>
 </html>
