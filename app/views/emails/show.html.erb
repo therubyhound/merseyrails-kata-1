@@ -1,14 +1,24 @@
-<%= turbo_frame_tag :detail do %>
-  <div class="border max-h-full overflow-y-auto bg-white">
-    <div class="sticky top-0 bg-white p-4 border-b">
-      <p class="text-2xl font-bold"><%= @email.subject %></p>
-      <p class="text-slate-700"><span class="text-slate-500">To:</span> <%= @email.recipient %></p>
-      <p class="text-slate-700"><span class="text-slate-500">From:</span> <%= @email.sender %></p>
-    </div>
-    <div class="p-4">
-      <div class="whitespace-pre-line">
-        <%= @email.body %>
+ <div class="fixed inset-0 z-10 bg-white md:relative md:flex-1 md:p-8 md:bg-slate-100">
+  <div class="p-4 md:hidden">
+    <%= link_to root_path, class: "flex items-center space-x-2 text-blue-500" do %>
+      <svg viewBox="0 0 12 20" width="12" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2L2 10L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Emails</span>
+    <% end %>
+  </div>
+  <%= turbo_frame_tag :detail do %>
+    <div class="border max-h-full overflow-y-auto bg-white">
+      <div class="sticky top-0 bg-white p-4 border-b">
+        <p class="text-2xl font-bold"><%= @email.subject %></p>
+        <p class="text-slate-700"><span class="text-slate-500">To:</span> <%= @email.recipient %></p>
+        <p class="text-slate-700"><span class="text-slate-500">From:</span> <%= @email.sender %></p>
+      </div>
+      <div class="p-4">
+        <div class="whitespace-pre-line">
+          <%= @email.body %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+ </div>
