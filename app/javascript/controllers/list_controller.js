@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static classes = [ "active" ]
+  static classes = [ "active", "deselect" ]
+  static targets = [ "scroll" ]
   static values = { selected: String }
 
   connect() {
@@ -17,11 +18,22 @@ export default class extends Controller {
     this.#setActiveSelection(event.currentTarget)
   }
 
+  deselect() {
+    const previousSelection = this.element.querySelector(`#${this.selectedValue}`)
+    previousSelection.classList.add(...this.deselectClasses)
+    this.#clearPreviousSelection()
+    const handleTransitionEnd = () => {
+      previousSelection.classList.remove(...this.deselectClasses)
+      previousSelection.removeEventListener('transitionend', handleTransitionEnd)
+    }
+    previousSelection.addEventListener('transitionend', handleTransitionEnd)
+  }
+
   #scrollToSelection(target) {
     const stickyHeader = this.element.querySelector('.sticky')
     const headerHeight = stickyHeader?.offsetHeight ?? 0
     const elementTop = target.offsetTop - headerHeight
-    this.element.scrollTo({ top: elementTop, behavior: "auto" })
+    this.scrollTarget.scrollTo({ top: elementTop, behavior: "auto" })
   }
 
   #setActiveSelection(target) {

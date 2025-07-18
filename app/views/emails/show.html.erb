@@ -1,7 +1,7 @@
  <%= turbo_frame_tag :detail, class: "h-screen" do %>
   <div class="fixed h-full inset-0 z-10 bg-white md:relative md:flex-1 md:p-8 md:bg-slate-100">
     <div class="p-4 md:hidden">
-      <%= link_to root_path, class: "flex items-center space-x-2 text-blue-500", data: { turbo_action: :advance } do %>
+      <%= link_to root_path, class: "flex items-center space-x-2 text-blue-500", data: { turbo_action: :advance, action: "list#deselect" } do %>
         <svg viewBox="0 0 12 20" width="12" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 2L2 10L10 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
